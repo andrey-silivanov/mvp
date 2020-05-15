@@ -35,7 +35,7 @@ services:
         container_name: phpunit
         build:
             context: docker_confs/php7-fpm
-            
+
         volumes:
         - ${APP_PATH}:/code
         - ${APP_PATH}/var/log:/code/var/log
