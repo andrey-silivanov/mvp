@@ -14,7 +14,9 @@
 /public/admin_panel/*
 /public/vendor/*
 /storage/*.key
+/storage
 /vendor
+/need-remove/*
 /.idea
 /.vagrant
 /docker_confs/docker_volumes/*
