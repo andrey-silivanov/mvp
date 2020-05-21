@@ -20,4 +20,15 @@ RUN echo "memory_limit = 512M" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 WORKDIR /code
 
+ENV user andrey
+
+RUN useradd -m -d /home/${user} ${user} \
+ && chown -R ${user} /home/${user}
+
+USER ${user}
+# Запускаем контейнер
+# Из документации: The main purpose of a CMD is to provide defaults for an executing container. These defaults can include an executable,
+# or they can omit the executable, in which case you must specify an ENTRYPOINT instruction as well.
+CMD ["php-fpm"]
+
 ENV TERM xterm-256color
