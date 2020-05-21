@@ -12,7 +12,7 @@ use Illuminate\Notifications\Notifiable;
  *
  * @package App\Models
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
 
