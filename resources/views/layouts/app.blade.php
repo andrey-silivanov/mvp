@@ -20,6 +20,7 @@
 </head>
 <body>
 <div class="container-fluid">
+    <h1>dsdsd {{ menu('Profile') }}</h1>
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-3 fh5co_padding_menu">

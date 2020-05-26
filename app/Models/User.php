@@ -4,19 +4,17 @@ declare(strict_types=1);
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use TCG\Voyager\Models\User as VoyagerUser;
 
 /**
  * Class User
  *
  * @package App\Models
  */
-class User extends Authenticatable implements MustVerifyEmail
+class User extends VoyagerUser implements MustVerifyEmail
 {
-    use Notifiable,
-        HasRoles;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
