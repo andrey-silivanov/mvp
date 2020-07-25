@@ -17,3 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group([
+    'namespace'  => 'Api',
+], function () {
+    Route::get('/countries', [
+        'as'   => '.countries',
+        'uses' => 'LocationController@getCountries',
+    ]);
+    Route::get('/{countryId}/states', [
+        'as'   => '.states',
+        'uses' => 'LocationController@getStates',
+    ]);
+    Route::get('/{stateId}/cities', [
+        'as'   => '.cities',
+        'uses' => 'LocationController@getCities',
+    ]);
+});

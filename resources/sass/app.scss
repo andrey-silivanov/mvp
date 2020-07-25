@@ -874,10 +874,15 @@ a, a:hover {
 
 .fh5co_contacts_message {
   @include border-radius(0 !important);
-  height: 150px;
+  height: 150px !important;
   resize: none;
   padding-top: 20px !important;
   letter-spacing: 1px !important;
+}
+
+.fh5co_contacts_message:focus {
+  border: 1px solid $yellow;
+  box-shadow: 0 0 0 0.1rem rgba(245, 188, 4, 0.3);
 }
 
 .contact_btn {
@@ -1119,4 +1124,11 @@ a, a:hover {
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
   }
+}
+
+
+//// Custom
+.row-without-margin {
+  margin-right: 0!important;
+  margin-left: 0!important;
 }

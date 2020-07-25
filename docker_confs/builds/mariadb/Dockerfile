@@ -1,4 +1,4 @@
-FROM mariadb:10.1
+FROM mariadb:10.5
 
 RUN apt-get -y update && apt-get -y install vim
 

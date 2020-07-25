@@ -17,8 +17,11 @@ mix
     .sass('resources/sass/owl.carousel.scss', 'public/css')
     .sass('resources/sass/owl.theme.default.scss', 'public/css')
     .sass('resources/sass/animate.scss', 'public/css')
+    .sass('resources/sass/select2.scss', 'public/css')
 
+    .js('resources/js/app.js', 'public/js')
     .js('resources/js/main.js', 'public/js')
+    .js('resources/js/location.js', 'public/js')
     .js('resources/js/jquery.stellar.min.js', 'public/js')
     .js('resources/js/jquery.waypoints.min.js', 'public/js')
     .js('resources/js/modernizr-3.5.0.min.js', 'public/js')

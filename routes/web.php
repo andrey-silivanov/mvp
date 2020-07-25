@@ -21,6 +21,21 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
+Route::group([
+    'namespace'  => 'Web',
+    'as'         => 'profile',
+    'prefix'     => 'profile',
+  //  'middleware' => 'auth',
+], function () {
+    Route::get('/create', [
+        'as'   => '.create',
+        'uses' => 'ProfileController@create',
+    ]);
+    Route::post('/store', [
+        'as'   => '.store',
+        'uses' => 'ProfileController@store',
+    ]);
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

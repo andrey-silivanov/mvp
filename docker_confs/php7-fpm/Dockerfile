@@ -1,13 +1,15 @@
 FROM php:7.4-fpm
 
 RUN apt-get update && apt-get install -y \
+		wget \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
-        --no-install-recommends git zip \
+        --no-install-recommends git libzip-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install -j$(nproc) iconv mysqli pdo_mysql
+    && docker-php-ext-install -j$(nproc) iconv mysqli pdo_mysql \
+    && docker-php-ext-install zip
 
 RUN curl -sS https://getcomposer.org/installer | php -- \
         --filename=composer \
@@ -16,7 +18,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         composer
 
 # Install xdebug
-RUN echo "memory_limit = 512M" >> /usr/local/etc/php/conf.d/xdebug.ini
+RUN echo "memory_limit = -1" >> /usr/local/etc/php/conf.d/xdebug.ini
 
 WORKDIR /code
 
