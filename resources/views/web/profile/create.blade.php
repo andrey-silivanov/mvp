@@ -97,6 +97,19 @@
                                 <label for="weight">{{ __('Ethnicity') }}</label>
                                 <x-personal-detail-select select-type="ethnicity"></x-personal-detail-select>
                             </div>
+                            <div class="col-sm-4 py-3">
+                                <label for="weight">{{ __('Hair color') }}</label>
+                                <x-personal-detail-select select-type="hair_color"></x-personal-detail-select>
+                            </div>
+                            <div class="col-sm-4 py-3">
+                                <label for="weight">{{ __('Hair length') }}</label>
+                                <x-personal-detail-select select-type="hair_length"></x-personal-detail-select>
+                            </div>
+                            <div class="col-sm-4 py-3">
+                                <label for="weight">{{ __('Breast size') }}</label>
+                                <x-personal-detail-select select-type="breast_size"></x-personal-detail-select>
+                            </div>
+
                         </div>
                         <div class="col-12 py-3">
                             <div class="form-check">
