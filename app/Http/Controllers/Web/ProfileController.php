@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Profile\ProfileCreateRequest;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -14,7 +15,7 @@ class ProfileController extends Controller
         return view('web.profile.create');
     }
 
-    public function store(Request $request)
+    public function store(ProfileCreateRequest $request)
     {
         dd($request->all());
     }

@@ -22,13 +22,13 @@ class ProfileCreateRequest extends FormRequest
     /**
      * ProfileCreateRequest constructor.
      *
-     * @param array                              $query
-     * @param array                              $request
-     * @param array                              $attributes
-     * @param array                              $cookies
-     * @param array                              $files
-     * @param array                              $server
-     * @param null                               $content
+     * @param array $query
+     * @param array $request
+     * @param array $attributes
+     * @param array $cookies
+     * @param array $files
+     * @param array $server
+     * @param null $content
      * @param PersonalDetailsAggregatorInterface $personalDetailsAggregator
      */
     public function __construct(

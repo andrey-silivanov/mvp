@@ -27,7 +27,7 @@
                         <div class="col-md-6 py-3">
                             <input id="name" type="text" placeholder="{{ __('Model name') }}"
                                    class="form-control fh5co_contact_text_box @error('name') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}" required autofocus>
+                                   name="name" value="{{ old('name') }}" autofocus>
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -49,7 +49,7 @@
                                 <select id="country" type="text"
                                        class="custom-select fh5co_contact_text_box js-example-basic-single
                                         @error('country') is-invalid @enderror"
-                                       name="country" required autofocus>
+                                       name="country" autofocus>
                                 </select>
                                 @error('country')
                                 <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                                 <select id="state" type="text"
                                         class="custom-select fh5co_contact_text_box js-example-basic-single
                                         @error('state') is-invalid @enderror"
-                                        name="state" required autofocus>
+                                        name="state" autofocus>
                                 </select>
                                 @error('state')
                                 <span class="invalid-feedback" role="alert">
@@ -75,7 +75,7 @@
                                 <select id="city" type="text"
                                         class="custom-select fh5co_contact_text_box js-example-basic-single
                                         @error('city') is-invalid @enderror"
-                                        name="city" required autofocus>
+                                        name="city" autofocus>
                                 </select>
                                 @error('city')
                                 <span class="invalid-feedback" role="alert">
@@ -109,7 +109,14 @@
                                 <label for="weight">{{ __('Breast size') }}</label>
                                 <x-personal-detail-select select-type="breast_size"></x-personal-detail-select>
                             </div>
-
+                            <div class="col-sm-4 py-3">
+                                <label for="weight">{{ __('Breast type') }}</label>
+                                <x-personal-detail-select select-type="breast_type"></x-personal-detail-select>
+                            </div>
+                            <div class="col-sm-4 py-3">
+                                <label for="weight">{{ __('Smoker') }}</label>
+                                <x-personal-detail-select select-type="smoker"></x-personal-detail-select>
+                            </div>
                         </div>
                         <div class="col-12 py-3">
                             <div class="form-check">
