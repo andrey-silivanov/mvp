@@ -1,0 +1,18 @@
+/* Left shop menu */
+.categories-menu-header:hover, .color-menu-header:hover {
+    cursor: pointer;
+    color: #00c4cc;
+    -webkit-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+    text-decoration: underline;
+}
+@media (max-width: 991px) {
+    .categories-menu-header > i, .color-menu-header > i {
+        transform: rotate(180deg);
+    }
+
+    .category-menu-block, .color-menu-block {
+        display: none;
+    }
+}

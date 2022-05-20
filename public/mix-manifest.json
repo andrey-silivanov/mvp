@@ -1,0 +1,10 @@
+{
+    "/assets/js/app.js": "/assets/js/app.js",
+    "/assets/js/main.js": "/assets/js/main.js",
+    "/assets/css/style.css": "/assets/css/style.css",
+    "/assets/css/plugins/plugins.min.css": "/assets/css/plugins/plugins.min.css",
+    "/assets/css/vendor/vendor.min.css": "/assets/css/vendor/vendor.min.css",
+    "/assets/js/plugins.min.js": "/assets/js/plugins.min.js",
+    "/assets/js/vendor.min.js": "/assets/js/vendor.min.js",
+    "/assets/images/favicon.ico": "/assets/images/favicon.ico"
+}

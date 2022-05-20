@@ -1,0 +1,91 @@
+.singe_ad {
+    color: $white;
+    background: $dark;
+}
+
+.cover-image {
+    min-height: 50vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+
+    .username-info {
+        position: absolute;
+        min-width: 30vw;
+        bottom: 0px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.4);
+        padding: 10px;
+        font-size: 2.5rem;
+
+        .vip {
+            color: $primary;
+        }
+
+        .verified {
+            color: $primary;
+        }
+
+        h1 {
+            display: inline;
+            color: $white;
+        }
+    }
+}
+
+.profile-content {
+    .blockquote {
+        position: relative;
+       // background-color: #f8f8f8;
+        color: $white;
+        font-style: italic;
+        margin: 25px 32px 25px 30px;
+        padding: 25px;
+        font-size: 16px;
+        &:before {
+            background-color: $primary;
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 5px;
+        }
+    }
+}
+
+.widget-title {
+    color: $white;
+}
+
+.profile-details {
+    display: flex;
+    flex-wrap: wrap;
+
+    div {
+        display: flex;
+        flex-basis: 100%;
+        color: $white;
+        font-size: 16px;
+
+        .label {
+            color: $primary;
+            flex-basis: 50%;
+        }
+    }
+}
+
+.contact-details {
+    .contact-block {
+        ul {
+            li {
+                font-size: 16px;
+                color: $white;
+
+                &:hover {
+                    color: $primary;
+                }
+            }
+        }
+    }
+}

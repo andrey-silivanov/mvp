@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,30 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes(['verify' => true]);
-
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('verified');
-
-Route::group([
-    'namespace'  => 'Web',
-    'as'         => 'profile',
-    'prefix'     => 'profile',
-  //  'middleware' => 'auth',
-], function () {
-    Route::get('/create', [
-        'as'   => '.create',
-        'uses' => 'ProfileController@create',
-    ]);
-    Route::post('/store', [
-        'as'   => '.store',
-        'uses' => 'ProfileController@store',
-    ]);
-});
-
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});
+Route::get('/', [\App\Http\Controllers\Web\HomeController::class, 'home']);
+Route::get('/ads', [\App\Http\Controllers\Web\HomeController::class, 'test']);
+Route::get('/single/{id}', [\App\Http\Controllers\Web\HomeController::class, 'ad']);

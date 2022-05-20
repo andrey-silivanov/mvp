@@ -1,16 +1,13 @@
 <?php
-declare(strict_types=1);
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 
-/**
- * Class AppServiceProvider
- *
- * @package App\Providers
- */
+use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\ServiceProvider;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -30,6 +27,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Schema::defaultStringLength(191);
+        $this->app->bind(Client::class, function () {
+            $config = Config::get('elasticsearch.client');
+            return ClientBuilder::fromConfig($config);
+        });
     }
 }

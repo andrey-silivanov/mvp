@@ -2,21 +2,21 @@ version: '3'
 
 services:
     mysql:
-      image: 'mysql:8.0'
-      ports:
-        - '${FORWARD_DB_PORT:-3306}:3306'
-      environment:
-        MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-        MYSQL_DATABASE: '${DB_DATABASE}'
-        MYSQL_USER: '${DB_USERNAME}'
-        MYSQL_PASSWORD: '${DB_PASSWORD}'
-        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-      volumes:
-        - ./docker_confs/docker_volumes/mysql:/var/lib/mysql
-      networks:
-        - sail
-      healthcheck:
-        test: [ "CMD", "mysqladmin", "ping" ]
+        image: 'mysql:8.0'
+        ports:
+            - '${FORWARD_DB_PORT:-3306}:3306'
+        environment:
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        volumes:
+            - ./docker_confs/docker_volumes/mysql:/var/lib/mysql
+        networks:
+            - sail
+        healthcheck:
+            test: [ "CMD", "mysqladmin", "ping" ]
 
     mvp_php:
         container_name: mvp_php
@@ -28,9 +28,9 @@ services:
         links:
             - mysql
         environment:
-          PHP_IDE_CONFIG: "serverName=Docker"
+            PHP_IDE_CONFIG: "serverName=Docker"
         networks:
-          - sail
+            - sail
 
     mvp_nginx:
         image: nginx:latest
@@ -44,55 +44,47 @@ services:
         links:
             - mvp_php
         networks:
-          - sail
+            - sail
 
-    # redis:
-    #     container_name: 'rt_redis'
-    #     image: "redis:latest"
-    #     ports:
-    #         - "6379:6379"
+    mvp_redis:
+        container_name: 'mvp_redis'
+        image: "redis:latest"
+        ports:
+            - "6379:6379"
 
-    # cassandra:
-    #     build: docker_confs/builds/cassandra/.
-    #     #image: cassandra:latest
-    #     container_name: 'rt_cassandra'
-    #     volumes:
-    #         - ./docker_confs/builds/cassandra/cassandra_scheme_docker.cql:/data/configs.cql
-    #         - ./docker_confs/docker_volumes/cassandra:/var/lib/cassandra
+        # cassandra:
+        #     build: docker_confs/builds/cassandra/.
+        #     #image: cassandra:latest
+        #     container_name: 'rt_cassandra'
+        #     volumes:
+        #         - ./docker_confs/builds/cassandra/cassandra_scheme_docker.cql:/data/configs.cql
+        #         - ./docker_confs/docker_volumes/cassandra:/var/lib/cassandra
 
-    # elasticsearch:
-    #     container_name: 'rt_elastic'
-    #     image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
-    #     environment:
-    #         - cluster.name=docker-cluster
-    #         - bootstrap.memory_lock=true
-    #         - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
-    #         - xpack.security.enabled=false
-    #     ulimits:
-    #         memlock:
-    #             soft: -1
-    #             hard: -1
-    #         nofile:
-    #             soft: 65536
-    #             hard: 65536
-    #     mem_limit: 500m
-    #     cap_add:
-    #         - IPC_LOCK
-    #     volumes:
-    #         - ./docker_confs/docker_volumes/elasticsearch:/usr/share/elasticsearch/data
-    #     networks:
-    #         - default
-    #     ports:
-    #         - "19201:9200"
+    mvp_elasticsearch:
+        container_name: 'mvp_elastic'
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.16.1
+        environment:
+            - discovery.type=single-node
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+            - node.name=mvp
+        volumes:
+            - ./docker_confs/docker_volumes/elasticsearch:/usr/share/elasticsearch/data
+        networks:
+            - sail
+        ports:
+            - "19202:9200"
 
-    # cerebro:
-    #     image: yannart/cerebro:latest
-    #     ports:
-    #         - "10002:9000"
-    #     depends_on:
-    #         - elasticsearch
-    #     volumes:
-    #         - ./docker_confs/cerebro.conf:/cerebro/cerebro-0.4.0/conf/application.conf
+    mvp_cerebro:
+        image: yannart/cerebro:latest
+        ports:
+            - "10003:9000"
+        depends_on:
+            - mvp_elasticsearch
+        networks:
+            - sail
+        volumes:
+            - ./docker_confs/cerebro/cerebro.conf:/cerebro/cerebro-0.4.0/conf/application.conf
 
     # rabbitmq:
     #     container_name: 'rt_rabbitmq'
@@ -103,5 +95,5 @@ services:
     #         - 5672
     #         - "15673:15672"
 networks:
-  sail:
-    driver: bridge
+    sail:
+        driver: bridge
